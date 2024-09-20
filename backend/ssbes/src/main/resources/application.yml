@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5435/ssbes
+#    url: jdbc:postgresql://postgres:5432/ssbes
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    enabled: true
+    drop-first: false
+    change-log: classpath:db.changelog-master.xml
+    default-schema: public
