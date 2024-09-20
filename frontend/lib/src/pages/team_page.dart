@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ssbek/src/widgets/description_widget.dart';
+
+import '../bloc/description/description_bloc.dart';
+import '../bloc/description/description_event.dart';
+import '../bloc/description/description_state.dart';
+
 
 class TeamPage extends StatefulWidget{
   final int id;
@@ -12,45 +19,38 @@ class TeamPage extends StatefulWidget{
 class _TeamPageState extends State<TeamPage>{
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("SSbes"),
+    return BlocProvider<DescriptionBloc>(
+      create: (context) => DescriptionBloc()..add(DescriptionRequestedEvent(teamId: widget.id)),
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text("SSbes"),
+        ),
+
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:[
+
+            Text(widget.name),
+
+            const SizedBox(height: 10),
+
+            Expanded(
+              child: BlocBuilder<DescriptionBloc, DescriptionState>(
+                builder: (context, teamState) {
+                  if(teamState is DescriptionLoadingState) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if(teamState is DescriptionUploadedState){
+                    return DescriptionWidget(description: teamState.description);
+                  } else{
+                    throw UnimplementedError();
+                  }
+                }
+              ),
+            )
+          ]
+        )
       ),
-
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children:[
-
-          Text(widget.name),
-
-          Expanded(
-            child: ListView(
-              children: const [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                   Text("some text: "),
-                   Text("other text")
-                  ],
-                ),
-
-                SizedBox(height: 10),
-
-                Row(
-                 mainAxisAlignment: MainAxisAlignment.center,
-                 children: [
-                   Text("some text: "),
-                   Text("other text")
-                 ],
-                ),
-
-                SizedBox(height: 10)
-              ],
-            ),
-          )
-        ]
-      )
     );
   }
 }
