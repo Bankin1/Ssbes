@@ -1,6 +1,5 @@
 package ru.ssbook.ssbes.dto
 
-import jakarta.persistence.Column
 import ru.ssbook.ssbes.entity.Description
 
 class DescriptionDTO(description: Description) {

@@ -1,6 +1,5 @@
 package ru.ssbook.ssbes.controller
 
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import ru.ssbook.ssbes.dto.DescriptionDTO
 import ru.ssbook.ssbes.service.DescriptionService
