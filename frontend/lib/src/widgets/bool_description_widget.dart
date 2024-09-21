@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class BoolDescriptionWidget extends StatelessWidget{
   final String text;
@@ -9,13 +10,33 @@ class BoolDescriptionWidget extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("$text: "),
-        if(value != null)
-          Text(value! ? "Да!" : "Нет(")
-      ],
+    return Container(
+      decoration: ShapeDecoration(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5))
+        ),
+        color: Theme.of(context).primaryColorLight,
+      ),
+
+      padding: const EdgeInsets.all(10),
+
+      child: IntrinsicHeight(
+        child: Row(
+          children: [
+            Expanded(
+                child: Align(alignment: Alignment.centerLeft,
+                    child: Text(text))),
+
+            const VerticalDivider(thickness: 1, color: Colors.black,),
+
+            if(value != null)
+              Expanded(child: Align(alignment: Alignment.centerRight,
+                  child: Text(value! ? "Да!" : "Нет(")))
+            else
+              const Spacer()
+          ],
+        ),
+      ),
     );
   }
 }

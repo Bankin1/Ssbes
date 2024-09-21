@@ -26,7 +26,7 @@ class DescriptionWidget extends StatelessWidget{
         const SizedBox(height: 10),
         StringDescriptionWidget(text: "Working time", value: description.workingTime),
         const SizedBox(height: 10),
-        BoolDescriptionWidget(text: "Have I seat", value: description.naveISeat),
+        BoolDescriptionWidget(text: "Have I seat", value: description.haveISeat),
         const SizedBox(height: 10),
         StringDescriptionWidget(text: "How often sinks", value: description.howOftenSinks),
         const SizedBox(height: 10),

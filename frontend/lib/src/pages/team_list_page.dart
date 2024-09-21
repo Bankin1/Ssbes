@@ -29,22 +29,25 @@ class _TeamListPageState extends State<TeamListPage>{
         title: const Text("SSbes"),
       ),
 
-      body: Stack(
-        children: [
-          Center(
-            child: BlocBuilder<TeamListBloc, TeamListState>(
-              builder: (BuildContext context, teamListState) =>
-              teamListState is TeamListUploadedState
-                  ? TeamListWidget(teams: teamListState.list)
-                  : const CircularProgressIndicator()
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Stack(
+          children: [
+            Center(
+              child: BlocBuilder<TeamListBloc, TeamListState>(
+                builder: (BuildContext context, teamListState) =>
+                teamListState is TeamListUploadedState
+                    ? TeamListWidget(teams: teamListState.list)
+                    : const CircularProgressIndicator()
+              ),
             ),
-          ),
-          const Positioned(
-              bottom: 0,
-              right: 0,
-              child: TeamAddButton(),
-          ),
-        ]
+            const Positioned(
+                bottom: 0,
+                right: 0,
+                child: TeamAddButton(),
+            ),
+          ]
+        ),
       )
     );
   }

@@ -27,32 +27,40 @@ class _TeamPageState extends State<TeamPage>{
           title: const Text("SSbes"),
         ),
 
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children:[
+        body: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:[
 
-            Text(widget.team.name,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold
+              Text(widget.team.name,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
               ),
-            ),
 
-            const SizedBox(height: 25),
+              const SizedBox(height: 25),
 
-            Expanded(
-              child: BlocBuilder<DescriptionBloc, DescriptionState>(
-                builder: (context, teamState) {
-                  if(teamState is DescriptionLoadingState) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if(teamState is DescriptionUploadedState){
-                    return DescriptionWidget(description: teamState.description);
-                  } else{
-                    throw UnimplementedError();
-                  }
-                }
-              ),
-            )
-          ]
+              Expanded(
+                child: Center(
+                  child: BlocBuilder<DescriptionBloc, DescriptionState>(
+                    builder: (context, teamState) {
+                      if(teamState is DescriptionLoadingState) {
+                        return const CircularProgressIndicator();
+                      }
+                      else if(teamState is DescriptionUploadedState){
+                        return SizedBox(
+                            width: MediaQuery.sizeOf(context).width * 1/3,
+                            child:
+                            DescriptionWidget(description: teamState.description));
+                      }
+                      throw UnimplementedError();
+                    }
+                  ),
+                ),
+              )
+            ]
+          ),
         )
       ),
     );
