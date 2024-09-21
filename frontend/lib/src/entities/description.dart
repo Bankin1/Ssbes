@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+part 'description.g.dart';
+
+
+@JsonSerializable()
 class Description{
   final String id;
 
@@ -16,6 +21,9 @@ class Description{
   final String? party;
   final String? smthElse;
 
+  factory Description.fromJson(Map<String, dynamic> json) => _$DescriptionFromJson(json);
+  Map<String, dynamic> toJson() => _$DescriptionToJson(this);
+
   const Description({
     required this.id,
     this.isYandex,
@@ -33,5 +41,4 @@ class Description{
     this.party,
     this.smthElse
   });
-
 }

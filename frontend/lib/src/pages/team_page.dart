@@ -19,7 +19,8 @@ class _TeamPageState extends State<TeamPage>{
   @override
   Widget build(BuildContext context) {
     return BlocProvider<DescriptionBloc>(
-      create: (context) => DescriptionBloc()..add(DescriptionRequestedEvent(descriptionId: widget.team.descriptionId)),
+      create: (context) => DescriptionBloc()
+        ..add(DescriptionRequestedEvent(descriptionId: widget.team.descriptionId)),
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -30,9 +31,13 @@ class _TeamPageState extends State<TeamPage>{
           mainAxisAlignment: MainAxisAlignment.center,
           children:[
 
-            Text(widget.team.name),
+            Text(widget.team.name,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold
+              ),
+            ),
 
-            const SizedBox(height: 10),
+            const SizedBox(height: 25),
 
             Expanded(
               child: BlocBuilder<DescriptionBloc, DescriptionState>(

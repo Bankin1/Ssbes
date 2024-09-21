@@ -1,13 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:ssbek/src/bloc/team_list/team_list_event.dart';
 import 'package:ssbek/src/bloc/team_list/team_list_state.dart';
-import 'package:ssbek/src/repository/team_repository_mock.dart';
-
 import '../../entities/team.dart';
 import '../../repository/team_repository.dart';
 
 class TeamListBloc extends Bloc<TeamListEvent, TeamListState>{
-  final TeamRepository _teamRepository = TeamRepositoryMock();
+  final TeamRepository _teamRepository = GetIt.instance<TeamRepository>();
 
   TeamListBloc():super(TeamListEmptyState()){
     on<TeamListRequestedEvent>(_onTeamListRequestedEvent);
@@ -22,7 +21,7 @@ class TeamListBloc extends Bloc<TeamListEvent, TeamListState>{
 
   _onTeamAddedEvent(TeamAddedEvent event, Emitter emit) async {
     emit(TeamListLoadingState());
-    await _teamRepository.addTeam(event.name);
+    await _teamRepository.createTeam(event.name);
     List<Team> list = await _teamRepository.getAllTeams();
     emit(TeamListUploadedState(list: list));
   }
