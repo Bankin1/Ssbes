@@ -10,4 +10,5 @@ interface TeamRepository : JpaRepository<Team, UUID> {
 
     fun getAllByUserId(userId: UUID): List<Team>
 
+    fun getTeamById(id: UUID): Team
 }
