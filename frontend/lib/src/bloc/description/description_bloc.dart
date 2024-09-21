@@ -16,7 +16,7 @@ class DescriptionBloc extends Bloc<DescriptionEvent, DescriptionState>{
   }
   _onDescriptionRequestedEvent(DescriptionRequestedEvent event, Emitter emit) async {
     emit(DescriptionLoadingState());
-    Description description = await _descriptionRepository.getDescriptionByTeamId(event.teamId);
+    Description description = await _descriptionRepository.getDescriptionById(event.descriptionId);
     emit(DescriptionUploadedState(description: description));
   }
 }

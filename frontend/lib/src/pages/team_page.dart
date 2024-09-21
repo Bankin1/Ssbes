@@ -5,13 +5,12 @@ import 'package:ssbek/src/widgets/description_widget.dart';
 import '../bloc/description/description_bloc.dart';
 import '../bloc/description/description_event.dart';
 import '../bloc/description/description_state.dart';
+import '../entities/team.dart';
 
 
 class TeamPage extends StatefulWidget{
-  final int id;
-  final String name;
-
-  const TeamPage({super.key, required this.id, required this.name});
+  final Team team;
+  const TeamPage({super.key, required this.team});
   @override
   State<StatefulWidget> createState() => _TeamPageState();
 }
@@ -20,7 +19,7 @@ class _TeamPageState extends State<TeamPage>{
   @override
   Widget build(BuildContext context) {
     return BlocProvider<DescriptionBloc>(
-      create: (context) => DescriptionBloc()..add(DescriptionRequestedEvent(teamId: widget.id)),
+      create: (context) => DescriptionBloc()..add(DescriptionRequestedEvent(descriptionId: widget.team.descriptionId)),
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -31,7 +30,7 @@ class _TeamPageState extends State<TeamPage>{
           mainAxisAlignment: MainAxisAlignment.center,
           children:[
 
-            Text(widget.name),
+            Text(widget.team.name),
 
             const SizedBox(height: 10),
 

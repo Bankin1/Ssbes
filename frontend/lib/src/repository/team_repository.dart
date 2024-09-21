@@ -2,5 +2,5 @@ import '../entities/team.dart';
 
 abstract class TeamRepository{
   Future<List<Team>> getAllTeams();
-  //void addTeam(Team team);
+  Future<void> addTeam(String name);
 }

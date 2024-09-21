@@ -9,13 +9,20 @@ import '../../repository/team_repository.dart';
 class TeamListBloc extends Bloc<TeamListEvent, TeamListState>{
   final TeamRepository _teamRepository = TeamRepositoryMock();
 
-
   TeamListBloc():super(TeamListEmptyState()){
-  on<TeamListRequestedEvent>(_onTeamListRequestedEvent);
+    on<TeamListRequestedEvent>(_onTeamListRequestedEvent);
+    on<TeamAddedEvent>(_onTeamAddedEvent);
   }
 
   _onTeamListRequestedEvent(TeamListRequestedEvent event, Emitter emit) async {
     emit(TeamListLoadingState());
+    List<Team> list = await _teamRepository.getAllTeams();
+    emit(TeamListUploadedState(list: list));
+  }
+
+  _onTeamAddedEvent(TeamAddedEvent event, Emitter emit) async {
+    emit(TeamListLoadingState());
+    await _teamRepository.addTeam(event.name);
     List<Team> list = await _teamRepository.getAllTeams();
     emit(TeamListUploadedState(list: list));
   }

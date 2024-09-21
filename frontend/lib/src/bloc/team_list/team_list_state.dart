@@ -8,6 +8,5 @@ class TeamListLoadingState extends TeamListState{}
 
 class TeamListUploadedState extends TeamListState{
   final List<Team> list;
-
   TeamListUploadedState({required this.list});
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../entities/description.dart';
 
@@ -14,7 +15,7 @@ class DescriptionWidget extends StatelessWidget{
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Tasks: ${description.tasks}")
+            Text("Tasks: ${description.whatIDo}")
           ],
         ),
 
@@ -23,7 +24,7 @@ class DescriptionWidget extends StatelessWidget{
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Stack: ${description.stack}")
+            Text("Stack: ${description.stackOfTechnology}")
           ],
         ),
 
