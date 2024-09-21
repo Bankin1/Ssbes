@@ -5,9 +5,14 @@ import java.util.*
 
 @Entity
 data class Team(
+    @Column(name = "name")
     val name: String,
+
+    @Column(name = "description_id")
     val descriptionId: UUID,
-    val userId: UUID,
+
+    @Column(name = "user_id")
+    val userId: UUID
 ){
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

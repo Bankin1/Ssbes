@@ -8,7 +8,7 @@ CREATE TABLE Description (
      what_i_do VARCHAR(255),
      office VARCHAR(255),
      working_time VARCHAR(255),
-     nave_i_seat BOOLEAN,
+     seat BOOLEAN,
      how_often_sinks VARCHAR(255),
      is_open_space BOOLEAN,
      work_after BOOLEAN,

@@ -9,6 +9,6 @@ import java.util.*
 @Repository
 interface DescriptionRepository: JpaRepository<Description, UUID> {
 
-    fun getDescriptionsById(id: UUID): Description
+    fun getDescriptionById(id: UUID): Description
 
 }
