@@ -16,8 +16,17 @@ class DescriptionRepositoryImpl implements DescriptionRepository{
       return result;
     }
     else{
-      throw Exception();
+      throw Exception(response.statusCode.toString());
     }
   }
-  
+
+  @override
+  Future<void> updateDescriptionById(String id, Description description) async {
+     var response = await dio
+         .post('/description/$id', data: description.toJson());
+
+     if(response.statusCode != 200){
+       throw Exception(response.statusCode.toString());
+     }
+  }
 }

@@ -18,7 +18,7 @@ Description _$DescriptionFromJson(Map<String, dynamic> json) => Description(
       isOpenSpace: json['is_open_space'] as bool?,
       workAfter: json['work_after'] as bool?,
       averageAge: (json['average_age'] as num?)?.toInt(),
-      isHealthyLifestyle: json['is_healthy_lifestyle'] as String?,
+      isHealthyLifestyle: json['is_healthy_lifestyle'] as bool?,
       party: json['party'] as String?,
       smthElse: json['smth_else'] as String?,
     );

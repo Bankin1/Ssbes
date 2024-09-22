@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ssbek/src/widgets/description_widget.dart';
+import 'package:ssbek/src/widgets/edit_description_widget.dart';
 
 import '../bloc/description/description_bloc.dart';
 import '../bloc/description/description_event.dart';
@@ -20,7 +21,8 @@ class _TeamPageState extends State<TeamPage>{
   Widget build(BuildContext context) {
     return BlocProvider<DescriptionBloc>(
       create: (context) => DescriptionBloc()
-        ..add(DescriptionRequestedEvent(descriptionId: widget.team.descriptionId)),
+        ..add(DescriptionRequestedEvent(id: widget.team.descriptionId)),
+
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -29,6 +31,7 @@ class _TeamPageState extends State<TeamPage>{
 
         body: Padding(
           padding: const EdgeInsets.all(15.0),
+
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children:[
@@ -42,21 +45,38 @@ class _TeamPageState extends State<TeamPage>{
               const SizedBox(height: 25),
 
               Expanded(
-                child: Center(
-                  child: BlocBuilder<DescriptionBloc, DescriptionState>(
-                    builder: (context, teamState) {
-                      if(teamState is DescriptionLoadingState) {
-                        return const CircularProgressIndicator();
-                      }
-                      else if(teamState is DescriptionUploadedState){
-                        return SizedBox(
-                            width: MediaQuery.sizeOf(context).width * 1/3,
-                            child:
-                            DescriptionWidget(description: teamState.description));
-                      }
-                      throw UnimplementedError();
-                    }
-                  ),
+                child: BlocBuilder<DescriptionBloc, DescriptionState>(
+                  builder: (context, descriptionState) {
+                    return Stack(
+                      fit: StackFit.passthrough,
+                      children: [
+                        if(descriptionState is DescriptionLoadingState)
+                          const Center(child: CircularProgressIndicator())
+
+                        else if(descriptionState is DescriptionUploadedState)
+                          Center(
+                            child: SizedBox(
+                                width: MediaQuery.sizeOf(context).width * 1/3,
+                                child: DescriptionWidget(
+                                    id: widget.team.descriptionId,
+                                    description: descriptionState.description
+                                )
+                            ),
+                          )
+
+                        else if(descriptionState is DescriptionEditingState)
+                            Center(
+                              child: SizedBox(
+                                  width: MediaQuery.sizeOf(context).width * 1/3,
+                                  child: EditDescriptionWidget(
+                                      id: widget.team.descriptionId,
+                                      description: descriptionState.description
+                                  )
+                              ),
+                            )
+                      ],
+                    );
+                  }
                 ),
               )
             ]

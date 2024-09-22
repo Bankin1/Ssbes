@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BoolDescriptionWidget extends StatelessWidget{
@@ -15,7 +14,7 @@ class BoolDescriptionWidget extends StatelessWidget{
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(5))
         ),
-        color: Theme.of(context).primaryColorLight,
+        color: Theme.of(context).colorScheme.primaryContainer
       ),
 
       padding: const EdgeInsets.all(10),

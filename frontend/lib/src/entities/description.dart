@@ -30,7 +30,7 @@ class Description{
   @JsonKey(name: 'average_age')
   final int? averageAge;
   @JsonKey(name: 'is_healthy_lifestyle')
-  final String? isHealthyLifestyle;
+  final bool? isHealthyLifestyle;
   @JsonKey(name: 'party')
   final String? party;
   @JsonKey(name: 'smth_else')

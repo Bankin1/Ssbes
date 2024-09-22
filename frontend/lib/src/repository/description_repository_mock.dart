@@ -20,4 +20,10 @@ class DescriptionRepositoryMock implements DescriptionRepository{
     throw UnimplementedError();
     //return descriptionsList.firstWhere((element) => element.id == id);
   }
+
+  @override
+  Future<void> updateDescriptionById(String id, Description description) {
+    // TODO: implement updateDescriptionById
+    throw UnimplementedError();
+  }
 }
