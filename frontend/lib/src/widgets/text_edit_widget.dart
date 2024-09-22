@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class TextFieldWidget extends StatefulWidget{
+class TextEditWidget extends StatefulWidget{
   final String text;
   final dynamic initValue;
   final TextInputType valueType;
 
-  const TextFieldWidget({
+  const TextEditWidget({
     super.key,
     required this.text,
     required this.initValue,
@@ -14,10 +14,10 @@ class TextFieldWidget extends StatefulWidget{
   });
 
   @override
-  State<StatefulWidget> createState() => TextFieldWidgetState();
+  State<StatefulWidget> createState() => TextEditWidgetState();
 }
 
-class TextFieldWidgetState extends State<TextFieldWidget>{
+class TextEditWidgetState extends State<TextEditWidget>{
 
   final TextEditingController _controller = TextEditingController();
   String get value => _controller.text;
@@ -46,24 +46,27 @@ class TextFieldWidgetState extends State<TextFieldWidget>{
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: Row(
-        children: [
-          Text(widget.text),
-
-          const SizedBox(width: 10),
-
-          Expanded(
-            child: TextField(
-              maxLines: null,
-              inputFormatters: [_getFormatter()],
-              keyboardType: widget.valueType,
-              decoration: InputDecoration(
-                hintText: widget.text
+      child: IntrinsicHeight(
+        child: Row(
+        
+          children: [
+            Expanded(child: Center(child: Text(widget.text))),
+        
+            const VerticalDivider(thickness: 1, color: Colors.black),
+        
+            Expanded(
+              child: TextField(
+                maxLines: null,
+                inputFormatters: [_getFormatter()],
+                keyboardType: widget.valueType,
+                decoration: InputDecoration(
+                  hintText: widget.text
+                ),
+                controller: _controller,
               ),
-              controller: _controller,
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

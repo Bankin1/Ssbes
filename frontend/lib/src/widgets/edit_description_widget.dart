@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ssbek/src/bloc/description/description_event.dart';
 import 'package:ssbek/src/entities/description.dart';
-import 'package:ssbek/src/widgets/bool_switch_widget.dart';
-import 'package:ssbek/src/widgets/text_field_widget.dart';
+import 'package:ssbek/src/widgets/bool_edit_widget.dart';
+import 'package:ssbek/src/widgets/text_edit_widget.dart';
 
 import '../bloc/description/description_bloc.dart';
 
@@ -37,7 +37,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
     children: [
       ListView(
         children: [
-          BoolSwitch(
+          BoolEditWidget(
               key: _keys.isYandex,
               text: "Is Yandex",
               initValue: widget.description.isYandex ?? false
@@ -45,7 +45,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 
           const SizedBox(height: 10),
 
-          BoolSwitch(
+          BoolEditWidget(
               key: _keys.isToPublic,
               text: "Is to public",
               initValue: widget.description.isToPublic ?? false
@@ -53,7 +53,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 
           const SizedBox(height: 10),
 
-          TextFieldWidget(
+          TextEditWidget(
               key: _keys.stackOfTechnology,
               text: "Stack of technology",
               initValue: widget.description.stackOfTechnology ?? "",
@@ -62,7 +62,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 
           const SizedBox(height: 10),
 
-          TextFieldWidget(
+          TextEditWidget(
               key: _keys.whatIDo,
               text: "What I do",
               initValue: widget.description.whatIDo ?? "",
@@ -71,7 +71,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 
           const SizedBox(height: 10),
 
-          TextFieldWidget(
+          TextEditWidget(
               key: _keys.office,
               text: "Office",
               initValue: widget.description.office ?? "",
@@ -80,7 +80,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 
           const SizedBox(height: 10),
 
-          TextFieldWidget(
+          TextEditWidget(
               key: _keys.workingTime,
               text: "Working time",
               initValue: widget.description.workingTime ?? "",
@@ -89,7 +89,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 
           const SizedBox(height: 10),
 
-          BoolSwitch(
+          BoolEditWidget(
               key: _keys.haveISeat,
               text: "Have I seat",
               initValue: widget.description.haveISeat ?? false
@@ -97,7 +97,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 
           const SizedBox(height: 10),
 
-          TextFieldWidget(
+          TextEditWidget(
               key: _keys.howOftenSinks,
               text: "How often sink",
               initValue: widget.description.howOftenSinks ?? "",
@@ -106,7 +106,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 
           const SizedBox(height: 10),
 
-          BoolSwitch(
+          BoolEditWidget(
               key: _keys.isOpenSpace,
               text: "Is open-space",
               initValue: widget.description.isOpenSpace ?? false
@@ -114,7 +114,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 
           const SizedBox(height: 10),
 
-          BoolSwitch(
+          BoolEditWidget(
               key: _keys.workAfter,
               text: "Work after",
               initValue: widget.description.workAfter ?? false
@@ -122,7 +122,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 
           const SizedBox(height: 10),
 
-          TextFieldWidget(
+          TextEditWidget(
               key: _keys.averageAge,
               text: "Average age",
               initValue: widget.description.averageAge ?? "",
@@ -131,7 +131,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 
           const SizedBox(height: 10),
 
-          BoolSwitch(
+          BoolEditWidget(
               key: _keys.isHealthyLifestyle,
               text: "Team has healthy lifestyle",
               initValue: widget.description.isHealthyLifestyle ?? false
@@ -139,7 +139,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 
           const SizedBox(height: 10),
 
-          TextFieldWidget(
+          TextEditWidget(
               key: _keys.party,
               text: "Party",
               initValue: widget.description.party ?? "",
@@ -148,7 +148,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 
           const SizedBox(height: 10),
 
-          TextFieldWidget(
+          TextEditWidget(
               key: _keys.smthElse,
               text: "Other info",
               initValue: widget.description.smthElse ?? "",
@@ -172,20 +172,20 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
 }
 
 class DescriptionGlobalKeys{
-  final isYandex = GlobalKey<BoolSwitchState>();
-  final isToPublic = GlobalKey<BoolSwitchState>();
-  final stackOfTechnology = GlobalKey<TextFieldWidgetState>();
-  final whatIDo = GlobalKey<TextFieldWidgetState>();
-  final office = GlobalKey<TextFieldWidgetState>();
-  final workingTime = GlobalKey<TextFieldWidgetState>();
-  final haveISeat = GlobalKey<BoolSwitchState>();
-  final howOftenSinks = GlobalKey<TextFieldWidgetState>();
-  final isOpenSpace = GlobalKey<BoolSwitchState>();
-  final workAfter = GlobalKey<BoolSwitchState>();
-  final averageAge = GlobalKey<TextFieldWidgetState>();
-  final isHealthyLifestyle = GlobalKey<BoolSwitchState>();
-  final party = GlobalKey<TextFieldWidgetState>();
-  final smthElse = GlobalKey<TextFieldWidgetState>();
+  final isYandex = GlobalKey<BoolEditWidgetState>();
+  final isToPublic = GlobalKey<BoolEditWidgetState>();
+  final stackOfTechnology = GlobalKey<TextEditWidgetState>();
+  final whatIDo = GlobalKey<TextEditWidgetState>();
+  final office = GlobalKey<TextEditWidgetState>();
+  final workingTime = GlobalKey<TextEditWidgetState>();
+  final haveISeat = GlobalKey<BoolEditWidgetState>();
+  final howOftenSinks = GlobalKey<TextEditWidgetState>();
+  final isOpenSpace = GlobalKey<BoolEditWidgetState>();
+  final workAfter = GlobalKey<BoolEditWidgetState>();
+  final averageAge = GlobalKey<TextEditWidgetState>();
+  final isHealthyLifestyle = GlobalKey<BoolEditWidgetState>();
+  final party = GlobalKey<TextEditWidgetState>();
+  final smthElse = GlobalKey<TextEditWidgetState>();
 
   int? get averageAgeValue => averageAge.currentState != null
       ? int.tryParse(averageAge.currentState!.value)

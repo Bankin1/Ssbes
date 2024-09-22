@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         title: 'SSbes',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
+          brightness: Brightness.light,
           useMaterial3: true,
         ),
         home: const TeamListPage()

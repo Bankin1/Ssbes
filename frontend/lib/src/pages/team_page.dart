@@ -55,23 +55,17 @@ class _TeamPageState extends State<TeamPage>{
 
                         else if(descriptionState is DescriptionUploadedState)
                           Center(
-                            child: SizedBox(
-                                width: MediaQuery.sizeOf(context).width * 1/3,
-                                child: DescriptionWidget(
-                                    id: widget.team.descriptionId,
-                                    description: descriptionState.description
-                                )
+                            child: DescriptionWidget(
+                                id: widget.team.descriptionId,
+                                description: descriptionState.description
                             ),
                           )
 
                         else if(descriptionState is DescriptionEditingState)
                             Center(
-                              child: SizedBox(
-                                  width: MediaQuery.sizeOf(context).width * 1/3,
-                                  child: EditDescriptionWidget(
-                                      id: widget.team.descriptionId,
-                                      description: descriptionState.description
-                                  )
+                              child: EditDescriptionWidget(
+                                  id: widget.team.descriptionId,
+                                  description: descriptionState.description
                               ),
                             )
                       ],

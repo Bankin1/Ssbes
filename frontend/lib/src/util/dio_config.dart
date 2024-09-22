@@ -6,6 +6,7 @@ class DioConfig{
 
   void dioInit(){
     debugPrint("\n\nINITED INITED INITED\n\n");
-    dio.options.baseUrl = 'http://localhost:8080/v1';
+    dio.options.baseUrl = const String.fromEnvironment('api_base_url',
+        defaultValue: 'http://localhost:8080/v1');
   }
 }

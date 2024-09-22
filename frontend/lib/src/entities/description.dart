@@ -21,7 +21,7 @@ class Description{
   final String? workingTime;
   @JsonKey(name: 'seat')
   final bool? haveISeat;
-  @JsonKey(name: 'how_often_sink')
+  @JsonKey(name: 'how_often_sinks')
   final String? howOftenSinks;
   @JsonKey(name: 'is_open_space')
   final bool? isOpenSpace;
