@@ -12,9 +12,9 @@ services:
   postgres:
     image: postgres:13.5
     environment:
-      POSTGRES_USER: postgres     
-      POSTGRES_PASSWORD: postgres 
-      POSTGRES_DB: ssbes 
+      POSTGRES_USER: ${SSBES_DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${SSBES_DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${SSBES_DB_NAME:-ssbes}
     volumes:
       - pgdata:/var/lib/postgresql/data
       - pgconf:/etc/postgresql
