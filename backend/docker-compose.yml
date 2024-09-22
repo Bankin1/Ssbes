@@ -1,9 +1,17 @@
+version: '3.8'
+
 services:
   ssbes_application:
     build:
       context: ./ssbes
       dockerfile: Dockerfile
     image: ssbes
+    environment:
+      SSBES_DB_HOSTNAME: ${SSBES_DB_HOSTNAME}
+      SSBES_DB_NAME: ${SSBES_DB_NAME}
+      SSBES_DB_PASSWORD: ${SSBES_DB_PASSWORD}
+      SSBES_DB_URL: ${SSBES_DB_URL}
+      SSBES_DB_USERNAME: ${SSBES_DB_USERNAME}
     ports:
       - 8080:8080
     depends_on:
@@ -12,9 +20,9 @@ services:
   postgres:
     image: postgres:13.5
     environment:
-      POSTGRES_USER: ${SSBES_DB_USERNAME:-postgres}
-      POSTGRES_PASSWORD: ${SSBES_DB_PASSWORD:-postgres}
-      POSTGRES_DB: ${SSBES_DB_NAME:-ssbes}
+      POSTGRES_USER: ${SSBES_DB_USERNAME}
+      POSTGRES_PASSWORD: ${SSBES_DB_PASSWORD}
+      POSTGRES_DB: ${SSBES_DB_NAME}
     volumes:
       - pgdata:/var/lib/postgresql/data
       - pgconf:/etc/postgresql
@@ -26,3 +34,4 @@ volumes:
   pgdata:
   pgconf:
   pglog:
+
