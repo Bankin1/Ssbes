@@ -54,10 +54,9 @@ liquibase {
 		main {
 			searchPath "${project.rootDir}/src/main/resources"
 			changelogFile "db.changelog-master.xml"
-//			url 'jdbc:postgresql://localhost:5435/ssbes'
-			url 'jdbc:postgresql://postgres:5432/ssbes'
-			username 'postgres'
-			password 'postgres'
+			url System.getenv('SSBES_DB_URL') ?: 'jdbc:postgresql://localhost:5435/ssbes'
+			username System.getenv('SSBES_DB_USERNAME') ?: 'postgres'
+			password System.getenv('SSBES_DB_PASSWORD') ?: 'postgres'
 		}
 	}
 }
