@@ -27,7 +27,7 @@ class _EditDescriptionWidgetState extends State<EditDescriptionWidget>{
   void _updateDescription(){
     BlocProvider.of<DescriptionBloc>(context).add(DescriptionUpdatedEvent(
         id: widget.id,
-        description: _keys.toDescription())
+        description: _keys.toDescription(widget.description))
     );
   }
 
@@ -191,20 +191,20 @@ class DescriptionGlobalKeys{
       ? int.tryParse(averageAge.currentState!.value)
       : null;
 
-  Description toDescription() => Description(
-    isYandex: isYandex.currentState?.value,
-    isToPublic: isToPublic.currentState?.value,
-    stackOfTechnology: stackOfTechnology.currentState?.value,
-    whatIDo: whatIDo.currentState?.value,
-    office: office.currentState?.value,
-    workingTime: workingTime.currentState?.value,
-    haveISeat: haveISeat.currentState?.value,
-    howOftenSinks: howOftenSinks.currentState?.value,
-    isOpenSpace: isOpenSpace.currentState?.value,
-    workAfter: workAfter.currentState?.value,
-    averageAge: averageAgeValue,
-    isHealthyLifestyle: isHealthyLifestyle.currentState?.value,
-    party: party.currentState?.value,
-    smthElse: smthElse.currentState?.value
+  Description toDescription(Description old) => Description(
+    isYandex: isYandex.currentState?.value ?? old.isYandex,
+    isToPublic: isToPublic.currentState?.value ?? old.isToPublic,
+    stackOfTechnology: stackOfTechnology.currentState?.value ?? old.stackOfTechnology,
+    whatIDo: whatIDo.currentState?.value ?? old.whatIDo,
+    office: office.currentState?.value ?? old.office,
+    workingTime: workingTime.currentState?.value ?? old.workingTime,
+    haveISeat: haveISeat.currentState?.value ?? old.haveISeat,
+    howOftenSinks: howOftenSinks.currentState?.value ?? old.howOftenSinks,
+    isOpenSpace: isOpenSpace.currentState?.value ?? old.isOpenSpace,
+    workAfter: workAfter.currentState?.value ?? old.workAfter,
+    averageAge: averageAgeValue ?? old.averageAge,
+    isHealthyLifestyle: isHealthyLifestyle.currentState?.value ?? old.isHealthyLifestyle,
+    party: party.currentState?.value ?? old.party,
+    smthElse: smthElse.currentState?.value ?? old.smthElse
   );
 }
