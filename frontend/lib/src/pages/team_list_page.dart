@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ssbek/src/bloc/team_list/team_list_bloc.dart';
 import 'package:ssbek/src/bloc/team_list/team_list_event.dart';
 import 'package:ssbek/src/bloc/team_list/team_list_state.dart';
+import 'package:ssbek/src/bloc/theme/theme_cubit.dart';
 import 'package:ssbek/src/widgets/add_team_button.dart';
 import 'package:ssbek/src/widgets/team_list_widget.dart';
 
@@ -27,6 +28,12 @@ class _TeamListPageState extends State<TeamListPage>{
       appBar: AppBar(
         centerTitle: true,
         title: const Text("SSbes"),
+        actions: [
+          IconButton(
+            onPressed: () => BlocProvider.of<ThemeCubit>(context).changeTheme(),
+            icon: const Icon(Icons.sunny),
+          )
+        ],
       ),
 
       body: Padding(

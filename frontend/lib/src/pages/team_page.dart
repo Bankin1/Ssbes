@@ -9,6 +9,7 @@ import '../bloc/description/description_state.dart';
 import '../bloc/team_list/team_list_bloc.dart';
 import '../bloc/team_list/team_list_event.dart';
 import '../bloc/team_list/team_list_state.dart';
+import '../bloc/theme/theme_cubit.dart';
 import '../entities/team.dart';
 
 
@@ -21,7 +22,8 @@ class TeamPage extends StatefulWidget{
 
 class _TeamPageState extends State<TeamPage>{
 
-  _onTeamRemovedPressed() async {
+  //final GlobalKey _teamText = GlobalKey();
+  void _onTeamRemovedPressed() async {
     bool? acceptation = await showDialog<bool>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -58,6 +60,14 @@ class _TeamPageState extends State<TeamPage>{
           .add(TeamRemovedEvent(id: widget.team.id));
     }
   }
+  // double _getWidgetWidth(GlobalKey key){
+  //   var result = 0.0;
+  //   debugPrint("here");
+  //   if(key.currentWidget != null){
+  //     //key.
+  //   }
+  //   return result;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +87,12 @@ class _TeamPageState extends State<TeamPage>{
           appBar: AppBar(
             centerTitle: true,
             title: const Text("SSbes"),
+            actions: [
+              IconButton(
+                onPressed: () => BlocProvider.of<ThemeCubit>(context).changeTheme(),
+                icon: const Icon(Icons.sunny),
+              )
+            ],
           ),
 
           body: Padding(
@@ -90,7 +106,7 @@ class _TeamPageState extends State<TeamPage>{
                   children: [
                     const Spacer(),
                     Text(widget.team.name,
-                      style: const TextStyle(
+                        style: const TextStyle(
                         fontWeight: FontWeight.bold
                       ),
                     ),
