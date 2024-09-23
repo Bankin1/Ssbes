@@ -11,6 +11,7 @@ class TeamListBloc extends Bloc<TeamListEvent, TeamListState>{
   TeamListBloc():super(TeamListEmptyState()){
     on<TeamListRequestedEvent>(_onTeamListRequestedEvent);
     on<TeamAddedEvent>(_onTeamAddedEvent);
+    on<TeamRemovedEvent>(_onTeamRemovedEvent);
   }
 
   _onTeamListRequestedEvent(TeamListRequestedEvent event, Emitter emit) async {
@@ -24,6 +25,14 @@ class TeamListBloc extends Bloc<TeamListEvent, TeamListState>{
     await _teamRepository.createTeam(event.name);
     List<Team> list = await _teamRepository.getAllTeams();
     emit(TeamListUploadedState(list: list));
+  }
+
+  _onTeamRemovedEvent(TeamRemovedEvent event, Emitter emit) async{
+    emit(TeamRemovedState(id: event.id));
+    emit(TeamListLoadingState());
+    await _teamRepository.deleteTeam(event.id);
+    var newTeams = await _teamRepository.getAllTeams();
+    emit(TeamListUploadedState(list: newTeams));
   }
 }
 

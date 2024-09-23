@@ -36,8 +36,15 @@ class TeamRepositoryImpl implements TeamRepository{
       debugPrint("\n${response.statusCode.toString()}\n");
       throw Exception();
     }
-    else{
-      debugPrint("\n\nYESYESYESYES\n\n");
+  }
+
+  @override
+  Future<void> deleteTeam(String id) async {
+    var response = await dio.delete('/team/$id');
+
+    if(response.statusCode != 200){
+      throw Exception();
     }
+
   }
 }

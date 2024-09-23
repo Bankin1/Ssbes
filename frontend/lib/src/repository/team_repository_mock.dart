@@ -32,4 +32,10 @@ class TeamRepositoryMock implements TeamRepository{
         name: name,
         descriptionId: "${teamsList.length}"));
   }
+
+  @override
+  Future<void> deleteTeam(String id) {
+    // TODO: implement deleteTeam
+    throw UnimplementedError();
+  }
 }

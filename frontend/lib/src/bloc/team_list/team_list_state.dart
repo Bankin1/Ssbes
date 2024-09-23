@@ -10,3 +10,8 @@ class TeamListUploadedState extends TeamListState{
   final List<Team> list;
   TeamListUploadedState({required this.list});
 }
+
+class TeamRemovedState extends TeamListState{
+  final String id;
+  TeamRemovedState({required this.id});
+}

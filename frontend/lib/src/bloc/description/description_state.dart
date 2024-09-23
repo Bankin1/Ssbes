@@ -14,3 +14,5 @@ class DescriptionEditingState extends DescriptionState{
   final Description description;
   DescriptionEditingState({required this.id, required this.description});
 }
+
+class DescriptionExitState extends DescriptionState{}

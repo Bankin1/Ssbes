@@ -19,3 +19,8 @@ class DescriptionUpdatedEvent extends DescriptionEvent{
 
   DescriptionUpdatedEvent({required this.id, required this.description});
 }
+
+class DescriptionRemoveEvent extends DescriptionEvent{
+  final String id;
+  DescriptionRemoveEvent({required this.id});
+}
